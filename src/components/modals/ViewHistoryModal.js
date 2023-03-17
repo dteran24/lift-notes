@@ -38,13 +38,13 @@ const ViewHistoryModal = ({
               return (
                 <IonList>
                   <IonListHeader>{history.last_updated_history}</IonListHeader>
-                  <IonItem>
+                  <IonItem key={history.id}>
                     <IonLabel position="stacked"><h1>Max:</h1></IonLabel>
-                    <IonLabel>{history.max_reps}</IonLabel>
+                    <IonLabel>{history.max_reps ? history.max_reps : "None was set"}</IonLabel>
                   </IonItem>
                   <IonItem>
                     <IonLabel position="stacked"><h1>Current:</h1></IonLabel>
-                    <IonLabel>{history.current_working_set}</IonLabel>
+                    <IonLabel>{history.current_working_set ? history.current_working_set : "None was set"}</IonLabel>
                   </IonItem>
                   <IonItem>
                     <IonLabel position="stacked"><h1>Weight:</h1></IonLabel>

@@ -24,23 +24,32 @@ const AddWorkoutModal = ({ setAddModalIsOpen, addModalIsOpen, setWorkOutList }) 
   const [date, setDate] = useState();
 
   const validateWeight = (weight) => {
-    return weight.match(/^-?\d+$/)
+    var pattern = /^[0-9]*$/
+
+    console.log(pattern.test(weight))
+    if (pattern.test(weight)) {
+      setCurrentWeight(weight);
+      setIsValidWeight(true)
+    } else {
+      setIsValidWeight(false);
+    }
+    
   }
-  const validateName = (name) => {
-    return name.match()
-  }
+
   const addWorkout = () => {
     
-
     if (workoutName === '' && currentWeight === '') {
       setIsValidName(false);
       setIsValidWeight(false);
       
-    } else if(validateWeight(currentWeight) !== true){
+    } else if (workoutName !== '' && currentWeight === '') {
+      setIsValidName(true);
       setIsValidWeight(false);
-    } else if (validateName(workoutName) !== true) {
+    } else if (workoutName === '' && currentWeight !== '') {
       setIsValidName(false);
-    }
+      setIsValidWeight(true);
+    } 
+    
       else {
       const jsonInput = {
         id: uniqid(),
@@ -77,7 +86,7 @@ const AddWorkoutModal = ({ setAddModalIsOpen, addModalIsOpen, setWorkOutList }) 
       setCurrentSet("");
       setCurrentWeight("");
       setIsValidName(true);
-      isValidWeight(true);
+      setIsValidWeight(true);
     
   }
   useEffect(() => {
@@ -119,7 +128,7 @@ const AddWorkoutModal = ({ setAddModalIsOpen, addModalIsOpen, setWorkOutList }) 
           />
         </IonItem>
         <IonItem>
-          <IonLabel position="floating">Enter Max Set</IonLabel>
+          <IonLabel position="floating">Enter Max Reps</IonLabel>
           <IonInput
             type="text"
             value={maxSet}
@@ -133,7 +142,7 @@ const AddWorkoutModal = ({ setAddModalIsOpen, addModalIsOpen, setWorkOutList }) 
             type="text"
             value={currentWeight}
             placeholder="145"
-            onIonChange={(e) => setCurrentWeight(e.target.value)}
+            onIonChange={(e) => validateWeight(e.target.value)}
           />
           <IonNote slot="error">Weight is required</IonNote>
         </IonItem>

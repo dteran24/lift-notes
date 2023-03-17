@@ -64,7 +64,7 @@ const HomeCard = ({
           )}
           {data.max_reps ? (
             <IonItem>
-              <IonLabel>{`Max Set: ${data.max_reps}`}</IonLabel>
+              <IonLabel>{`Max Reps: ${data.max_reps}lb`}</IonLabel>
             </IonItem>
           ) : (
             ""

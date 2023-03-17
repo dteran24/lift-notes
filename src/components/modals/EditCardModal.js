@@ -45,6 +45,7 @@ const EditCardModal = ({
       weight: weight,
       history: [
         {
+          id: id,
           max_reps: maxSet,
           current_working_set: currentSet,
           weight: weight,
@@ -110,7 +111,7 @@ const EditCardModal = ({
           />
         </IonItem>
         <IonItem>
-          <IonLabel position="floating">Edit Max Set</IonLabel>
+          <IonLabel position="floating">Edit Max Reps</IonLabel>
           <IonInput
             type="text"
             placeholder={data.max_reps}
