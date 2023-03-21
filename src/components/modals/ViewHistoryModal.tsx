@@ -11,12 +11,19 @@ import {
   IonLabel,
   IonListHeader,
 } from "@ionic/react";
+import type { Workout } from "../../interfaces/user";
+
+interface HistoryModalProps{
+  setHistoryModalIsOpen: any;
+  historyModalIsOpen: any;
+  data: Workout;
+}
 
 const ViewHistoryModal = ({
   setHistoryModalIsOpen,
   historyModalIsOpen,
   data,
-}) => {
+}: HistoryModalProps) => {
 
   
   console.log(data.history);
@@ -34,11 +41,11 @@ const ViewHistoryModal = ({
       </IonHeader>
       <IonContent>
         {data.history.length > 0
-          ? data.history.map((history) => {
+          ? data.history.map((history, index) => {
               return (
-                <IonList>
+                <IonList key={index}>
                   <IonListHeader>{history.last_updated_history}</IonListHeader>
-                  <IonItem key={history.id}>
+                  <IonItem>
                     <IonLabel position="stacked"><h1>Max:</h1></IonLabel>
                     <IonLabel>{history.max_reps ? history.max_reps : "None was set"}</IonLabel>
                   </IonItem>

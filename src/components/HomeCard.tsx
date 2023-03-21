@@ -10,9 +10,23 @@ import {
   IonList,
   IonLabel,
 } from "@ionic/react";
+import type { Workout } from "../interfaces/user";
 import { useState } from "react";
 import EditCardModal from "./modals/EditCardModal";
 import ViewHistoryModal from "./modals/ViewHistoryModal";
+
+interface HomeCardProps{
+  data: Workout;
+  deleteOption: any;
+  setDeleteOption: any;
+  setWorkOutList: any;
+  workoutList: any;
+  editOption: any;
+  setEditOption: any;
+  
+}
+
+
 
 const HomeCard = ({
   data,
@@ -21,18 +35,17 @@ const HomeCard = ({
   setWorkOutList,
   editOption,
   setEditOption,
-  setHistoryList,
-}) => {
+}: HomeCardProps) => {
   const [isOpen, setIsOpen] = useState(false);
   const [historyModalIsOpen, setHistoryModalIsOpen] = useState(false);
-  const deleteCard = (id) => {
-    setWorkOutList((prevState) =>
+  const deleteCard = (id: number) => {
+    setWorkOutList((prevState : Workout[]) =>
       prevState.filter((card) => {
         return card.id !== id;
       })
     );
   };
-   console.log(data.last_updated)
+console.log(data.last_updated)
   return (
     <IonCard>
       {!data.last_updated ? (
@@ -98,7 +111,6 @@ const HomeCard = ({
         setIsOpen={setIsOpen}
         data={data}
         setWorkOutList={setWorkOutList}
-        setHistoryList={setHistoryList}
       />
       <ViewHistoryModal historyModalIsOpen={historyModalIsOpen} setHistoryModalIsOpen={setHistoryModalIsOpen} data={data} />
     </IonCard>

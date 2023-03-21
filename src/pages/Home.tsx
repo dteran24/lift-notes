@@ -11,12 +11,10 @@ import { chevronUpCircle, create, trash, add } from "ionicons/icons";
 import HomeCard from "../components/HomeCard";
 import AddWorkoutModal from "../components/modals/AddWorkoutModal";
 
-
 const Home = () => {
- 
   const [workoutList, setWorkOutList] = useState([]);
   const [addModalIsOpen, setAddModalIsOpen] = useState(false);
- 
+
   const [deleteOption, setDeleteOption] = useState(false);
   const [editOption, setEditOption] = useState(false);
 
@@ -33,26 +31,31 @@ const Home = () => {
     setAddModalIsOpen(true);
     setDeleteOption(false);
     setEditOption(false);
-  }
+  };
   return (
     <IonPage>
       <IonContent>
-        {workoutList.length > 0 ?    <div className="">
-          {workoutList.map((cardData) => {
-            return (
-              <HomeCard
-                data={cardData}
-                deleteOption={deleteOption}
-                setDeleteOption={setDeleteOption}
-                setWorkOutList={setWorkOutList}
-                editOption={editOption}
-                setEditOption={setEditOption}
-                workoutList={workoutList}
-              />
-            );
-          })}
-        </div> : "There is not content atm" }
-     
+        {workoutList.length > 0 ? (
+          <div className="">
+            {workoutList.map((cardData) => {
+              return (
+                <HomeCard
+                  key={cardData.id}
+                  data={cardData}
+                  deleteOption={deleteOption}
+                  setDeleteOption={setDeleteOption}
+                  setWorkOutList={setWorkOutList}
+                  editOption={editOption}
+                  setEditOption={setEditOption}
+                  workoutList={workoutList}
+                />
+              );
+            })}
+          </div>
+        ) : (
+          "There is not content atm"
+        )}
+
         <IonFab slot="fixed" vertical="bottom" horizontal="end">
           <IonFabButton>
             <IonIcon icon={chevronUpCircle}></IonIcon>
@@ -64,7 +67,7 @@ const Home = () => {
             <IonFabButton onClick={() => setEditOptions()}>
               <IonIcon icon={create}></IonIcon>
             </IonFabButton>
-            <IonFabButton onClick={() => addModalOpen(true)}>
+            <IonFabButton onClick={() => addModalOpen()}>
               <IonIcon icon={add}></IonIcon>
             </IonFabButton>
           </IonFabList>

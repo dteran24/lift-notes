@@ -12,21 +12,28 @@ import {
   IonNote
 } from "@ionic/react";
 import { useState, useEffect } from "react";
+import type { Workout } from "../../interfaces/user";
 import uniqid from "uniqid";
-const AddWorkoutModal = ({ setAddModalIsOpen, addModalIsOpen, setWorkOutList }) => {
-  const [workoutName, setWorkoutName] = useState("");
-  const [maxSet, setMaxSet] = useState("");
-  const [currentSet, setCurrentSet] = useState("");
-  const [currentWeight, setCurrentWeight] = useState("");
-  const [isValidName, setIsValidName] = useState();
-  const [isValidWeight, setIsValidWeight] = useState();
 
-  const [date, setDate] = useState();
 
-  const validateWeight = (weight) => {
+interface AddWorkoutProps{
+  setAddModalIsOpen: any;
+  addModalIsOpen: any;
+  setWorkOutList: any;
+}
+const AddWorkoutModal = ({ setAddModalIsOpen, addModalIsOpen, setWorkOutList } : AddWorkoutProps) => {
+  const [workoutName, setWorkoutName] = useState<string>();
+  const [maxSet, setMaxSet] = useState<string>();
+  const [currentSet, setCurrentSet] = useState<string>();
+  const [currentWeight, setCurrentWeight] = useState<string>();
+  const [isValidName, setIsValidName] = useState<boolean>();
+  const [isValidWeight, setIsValidWeight] = useState<boolean>();
+
+  const [date, setDate] = useState<string>();
+
+  const validateWeight = (weight: string) => {
     var pattern = /^[0-9]*$/
 
-    console.log(pattern.test(weight))
     if (pattern.test(weight)) {
       setCurrentWeight(weight);
       setIsValidWeight(true)
@@ -67,7 +74,7 @@ const AddWorkoutModal = ({ setAddModalIsOpen, addModalIsOpen, setWorkOutList }) 
           },
         ],
       };
-      setWorkOutList((prevState) => [...prevState, jsonInput]);
+      setWorkOutList((prevState: Workout[]) => [...prevState, jsonInput]);
       setAddModalIsOpen(false);
       setWorkoutName("");
       setMaxSet("");
@@ -114,7 +121,7 @@ const AddWorkoutModal = ({ setAddModalIsOpen, addModalIsOpen, setWorkOutList }) 
             type="text"
             value={workoutName}
             placeholder="Bench press"
-            onIonChange={(e) => setWorkoutName(e.target.value)}
+            onIonChange={(e) => setWorkoutName((e.target as HTMLIonInputElement).value as string)}
           />
             <IonNote slot="error">Workout name is required</IonNote>
         </IonItem>
@@ -124,7 +131,7 @@ const AddWorkoutModal = ({ setAddModalIsOpen, addModalIsOpen, setWorkOutList }) 
             type="text"
             value={currentSet}
             placeholder="10 x 10"
-            onIonChange={(e) => setCurrentSet(e.target.value)}
+            onIonChange={(e) => setCurrentSet((e.target as HTMLIonInputElement).value as string)}
           />
         </IonItem>
         <IonItem>
@@ -133,7 +140,7 @@ const AddWorkoutModal = ({ setAddModalIsOpen, addModalIsOpen, setWorkOutList }) 
             type="text"
             value={maxSet}
             placeholder="10 x 10"
-            onIonChange={(e) => setMaxSet(e.target.value)}
+            onIonChange={(e) => setMaxSet((e.target as HTMLIonInputElement).value as string)}
           />
         </IonItem>
         <IonItem className={`${isValidWeight && 'ion-valid'} ${isValidWeight === false && 'ion-invalid'}`}>
@@ -142,7 +149,7 @@ const AddWorkoutModal = ({ setAddModalIsOpen, addModalIsOpen, setWorkOutList }) 
             type="text"
             value={currentWeight}
             placeholder="145"
-            onIonChange={(e) => validateWeight(e.target.value)}
+            onIonChange={(e) => validateWeight((e.target as HTMLIonInputElement).value as string)}
           />
           <IonNote slot="error">Weight is required</IonNote>
         </IonItem>

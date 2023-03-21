@@ -6,13 +6,23 @@ import {
   IonContent,
   IonToolbar,
   IonTitle,
-  IonDatetime,
+  // IonDatetime,
   IonItem,
   IonLabel,
   IonInput,
 } from "@ionic/react";
-import { set } from "date-fns";
+// import { set } from "date-fns";
+import type { Workout } from "../../interfaces/user";
 import { useEffect, useState } from "react";
+
+
+interface EditCardProps{
+  isOpen: any;
+  setIsOpen: any;
+  setWorkOutList: any,
+  data: Workout;
+  setEditOption: any;
+}
 
 const EditCardModal = ({
   isOpen,
@@ -21,8 +31,8 @@ const EditCardModal = ({
   data,
   setEditOption,
   
-}) => {
-  const [forgot, setForgot] = useState(false);
+} : EditCardProps) => {
+  // const [forgot, setForgot] = useState(false);
   const [workoutName, setWorkoutName] = useState(data.title);
   const [currentSet, setCurrentSet] = useState(data.current_working_set);
   const [maxSet, setMaxSet] = useState(data.max_reps);
@@ -35,7 +45,7 @@ const EditCardModal = ({
     setDate(currentDate.toLocaleString("en-US"));
   }, []);
 
-  const editWorkout = (id) => {
+  const editWorkout = (id: number) => {
     const newWorkout = {
       id: id,
       title: workoutName,
@@ -45,7 +55,6 @@ const EditCardModal = ({
       weight: weight,
       history: [
         {
-          id: id,
           max_reps: maxSet,
           current_working_set: currentSet,
           weight: weight,
@@ -54,7 +63,7 @@ const EditCardModal = ({
       ],
     };
 
-    setWorkOutList((prevState) =>
+    setWorkOutList((prevState: Workout[]) =>
       prevState.map((workout) => {
         console.log(workout.id)
         if (workout.id === id) {
@@ -72,7 +81,7 @@ const EditCardModal = ({
     console.log(newWorkout);
   };
 
-  const setEditOptions = (editOption) => {
+  const setEditOptions = (editOption: boolean) => {
     setEditOption(editOption);
     setIsOpen(editOption);
   
@@ -96,9 +105,8 @@ const EditCardModal = ({
           <IonLabel position="floating">Edit workout name</IonLabel>
           <IonInput
             type="text"
-            placeholder={data.title}
             value={workoutName}
-            onIonChange={(e) => setWorkoutName(e.target.value)}
+            onIonChange={(e) => setWorkoutName((e.target as HTMLIonInputElement).value as string)}
           />
         </IonItem>
         <IonItem>
@@ -107,7 +115,7 @@ const EditCardModal = ({
             type="text"
             placeholder={data.current_working_set}
             value={currentSet}
-            onIonChange={(e) => setCurrentSet(e.target.value)}
+            onIonChange={(e) => setCurrentSet((e.target as HTMLIonInputElement).value as string)}
           />
         </IonItem>
         <IonItem>
@@ -116,16 +124,15 @@ const EditCardModal = ({
             type="text"
             placeholder={data.max_reps}
             value={maxSet}
-            onIonChange={(e) => setMaxSet(e.target.value)}
+            onIonChange={(e) => setMaxSet((e.target as HTMLIonInputElement).value as string)}
           />
         </IonItem>
         <IonItem>
           <IonLabel position="floating">Edit Weight</IonLabel>
           <IonInput
             type="text"
-            placeholder={data.weight}
             value={weight}
-            onIonChange={(e) => setWeight(e.target.value)}
+            onIonChange={(e) => setWeight((e.target as HTMLIonInputElement).value as number)}
           />
         </IonItem>
         {/* <IonItem>
