@@ -47,16 +47,16 @@ console.log(data.last_updated)
   return (
     <IonCard>
       {!data.last_updated ? (
-        <IonCardHeader>
+        <IonCardHeader color={"dark"}>
           <div className="d-flex justify-content-between">
-            <IonCardTitle>{data.title}</IonCardTitle>
+            <IonCardTitle>{data.title.toUpperCase()}</IonCardTitle>
           </div>
         </IonCardHeader>
       ) : (
-        <IonCardHeader>
+        <IonCardHeader color={"dark"}>
           <div className="d-flex justify-content-between align-items-center mb-2">
             <IonCardTitle>{data.title}</IonCardTitle>
-            <IonButton size="small" onClick={()=> setHistoryModalIsOpen(true)}>View history</IonButton>
+            <IonButton color={"medium"} size="small" onClick={()=> setHistoryModalIsOpen(true)}>View history</IonButton>
           </div>
           <IonCardSubtitle>
             {`Last Updated: ${data.last_updated}`}
@@ -69,20 +69,20 @@ console.log(data.last_updated)
           {data.current_working_set ? (
             <IonItem>
               <IonLabel className="m-0"><h1>Current Set:</h1></IonLabel>
-              <IonLabel className="d-flex align-items-center m-0 h-100 fs-3">{data.current_working_set}</IonLabel>
+              <IonLabel className="d-flex align-items-center m-0 h-100 fs-3 justify-content-center">{data.current_working_set}</IonLabel>
             </IonItem>
           ) : (
             ""
           )}
           <IonItem>
             <IonLabel className="m-0"><h1>Weight:</h1></IonLabel>
-            <IonLabel className="d-flex align-items-center m-0 h-100 fs-3">{`${data.weight}lbs`}</IonLabel>
+            <IonLabel className="d-flex align-items-center m-0 h-100 fs-3 justify-content-center">{`${data.weight}lbs`}</IonLabel>
           </IonItem>
 
           {data.max_reps ? (
             <IonItem>
               <IonLabel className="m-0"><h1>Max Set:</h1></IonLabel>
-              <IonLabel className="d-flex align-items-center m-0 h-100 fs-3">{`${data.max_reps}lbs`}</IonLabel>
+              <IonLabel className="d-flex align-items-center m-0 h-100 fs-3 justify-content-center">{`${data.max_reps}lbs`}</IonLabel>
             </IonItem>
           ) : (
             ""
@@ -91,14 +91,14 @@ console.log(data.last_updated)
         </IonList>
 
         {deleteOption ? (
-          <IonButtons className="d-flex justify-content-end mt-3">
+          <IonButtons className="d-flex justify-content-end mx-2 mb-2">
             <IonButton onClick={() => setDeleteOption(false)}>Cancel</IonButton>
             <IonButton color="danger" onClick={() => deleteCard(data.id)}>
               Delete
             </IonButton>
           </IonButtons>
         ) : !deleteOption && editOption ? (
-          <IonButtons className="d-flex justify-content-end">
+          <IonButtons className="d-flex justify-content-end mx-2 mb-2">
             <IonButton onClick={() => setEditOption(false)}>Cancel</IonButton>
             <IonButton color="danger" onClick={() => setIsOpen(true)}>
               Edit
