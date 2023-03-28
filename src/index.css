@@ -1,3 +1,10 @@
+:root{
+  /* --ion-background-color: #C8E0F4;
+  --ion-item-background: white;
+  --ion-toolbar-background: white; */
+}
+
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -11,3 +18,4 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+

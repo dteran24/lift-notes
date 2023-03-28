@@ -26,8 +26,6 @@ interface HomeCardProps{
   
 }
 
-
-
 const HomeCard = ({
   data,
   deleteOption,
@@ -56,7 +54,7 @@ console.log(data.last_updated)
         </IonCardHeader>
       ) : (
         <IonCardHeader>
-          <div className="d-flex justify-content-between mb-2">
+          <div className="d-flex justify-content-between align-items-center mb-2">
             <IonCardTitle>{data.title}</IonCardTitle>
             <IonButton size="small" onClick={()=> setHistoryModalIsOpen(true)}>View history</IonButton>
           </div>
@@ -76,6 +74,11 @@ console.log(data.last_updated)
           ) : (
             ""
           )}
+          <IonItem>
+            <IonLabel className="m-0"><h1>Weight:</h1></IonLabel>
+            <IonLabel className="d-flex align-items-center m-0 h-100 fs-3">{`${data.weight}lbs`}</IonLabel>
+          </IonItem>
+
           {data.max_reps ? (
             <IonItem>
               <IonLabel className="m-0"><h1>Max Set:</h1></IonLabel>
@@ -84,10 +87,7 @@ console.log(data.last_updated)
           ) : (
             ""
           )}
-          <IonItem>
-            <IonLabel className="m-0"><h1>Weight:</h1></IonLabel>
-            <IonLabel className="d-flex align-items-center m-0 h-100 fs-3">{`${data.weight}lbs`}</IonLabel>
-          </IonItem>
+          
         </IonList>
 
         {deleteOption ? (

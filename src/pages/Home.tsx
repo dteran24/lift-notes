@@ -53,7 +53,9 @@ const Home = () => {
             })}
           </div>
         ) : (
-          "There is not content atm"
+          <div className="d-flex align-items-center justify-content-center h-100">
+            <h1>Please add a workout to begin!</h1>
+          </div>
         )}
 
         <IonFab slot="fixed" vertical="bottom" horizontal="end">

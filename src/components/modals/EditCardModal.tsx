@@ -46,6 +46,7 @@ const EditCardModal = ({
   }, []);
 
   const editWorkout = (id: number) => {
+    
     const newWorkout = {
       id: id,
       title: workoutName,
@@ -110,7 +111,7 @@ const EditCardModal = ({
           />
         </IonItem>
         <IonItem>
-          <IonLabel position="floating">Edit Current Working Set</IonLabel>
+          <IonLabel position="floating">Edit Working Set</IonLabel>
           <IonInput
             type="text"
             placeholder={data.current_working_set}

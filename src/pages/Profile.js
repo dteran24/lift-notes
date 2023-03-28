@@ -15,7 +15,7 @@ import {
 } from "@ionic/react";
 import { OverlayEventDetail } from '@ionic/core/components';
 import ProfileStats from "../components/ProfileStats";
-import ProfileStatsModal from '../components/modals/ProfileStatsModal';
+
 const Profile = () => {
   const mockData = {
     name: "Daniel Teran",
@@ -41,7 +41,7 @@ const Profile = () => {
             <ProfileStats userData={mockData} setIsOpen={setIsOpen} />
           </div>
         </div>
-        <ProfileStatsModal setIsOpen={setIsOpen} isOpen={isOpen} />
+        
       </IonContent>
     </IonPage>
   );

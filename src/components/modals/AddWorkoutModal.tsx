@@ -14,6 +14,7 @@ import {
 import { useState, useEffect } from "react";
 import type { Workout } from "../../interfaces/user";
 import uniqid from "uniqid";
+import PlateCalculatorModal from "./PlateCalculatorModal";
 
 
 interface AddWorkoutProps{
@@ -28,6 +29,7 @@ const AddWorkoutModal = ({ setAddModalIsOpen, addModalIsOpen, setWorkOutList } :
   const [currentWeight, setCurrentWeight] = useState<string>();
   const [isValidName, setIsValidName] = useState<boolean>();
   const [isValidWeight, setIsValidWeight] = useState<boolean>();
+  const [plateCalculatorModal, setPlateCalculatorModal] = useState<boolean>();
 
   const [date, setDate] = useState<string>();
 
@@ -126,7 +128,7 @@ const AddWorkoutModal = ({ setAddModalIsOpen, addModalIsOpen, setWorkOutList } :
             <IonNote slot="error">Workout name is required</IonNote>
         </IonItem>
         <IonItem>
-          <IonLabel position="floating">Enter Current Sets</IonLabel>
+          <IonLabel position="floating">Enter Current Set</IonLabel>
           <IonInput
             type="text"
             value={currentSet}
@@ -145,7 +147,7 @@ const AddWorkoutModal = ({ setAddModalIsOpen, addModalIsOpen, setWorkOutList } :
           <IonNote slot="error">Weight is required</IonNote>
         </IonItem>
         <IonItem>
-          <IonLabel position="floating">Enter Max Reps</IonLabel>
+          <IonLabel position="floating">Enter Max Set</IonLabel>
           <IonInput
             type="text"
             value={maxSet}
@@ -153,7 +155,7 @@ const AddWorkoutModal = ({ setAddModalIsOpen, addModalIsOpen, setWorkOutList } :
             onIonChange={(e) => setMaxSet((e.target as HTMLIonInputElement).value as string)}
           />
         </IonItem>
-       
+       <PlateCalculatorModal setIsOpen={setPlateCalculatorModal} isOpen={plateCalculatorModal}/> 
       </IonContent>
     </IonModal>
   );

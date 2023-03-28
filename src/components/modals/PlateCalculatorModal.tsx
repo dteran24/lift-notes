@@ -9,8 +9,12 @@ import {
     IonItem,
     IonLabel,
 } from "@ionic/react";
+interface PlateCalculatorModalProps{
+  setIsOpen: any ;
+  isOpen: any;
+}
 
-const ProfileStatsModal = ({setIsOpen, isOpen}) => {
+const PlateCalculatorModal = ({setIsOpen, isOpen}: PlateCalculatorModalProps) => {
     return (
         <IonModal isOpen={isOpen}>
           <IonHeader>
@@ -28,4 +32,4 @@ const ProfileStatsModal = ({setIsOpen, isOpen}) => {
     );
 }
 
-export default ProfileStatsModal;
+export default PlateCalculatorModal;
