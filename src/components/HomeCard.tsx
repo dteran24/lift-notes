@@ -56,7 +56,7 @@ console.log(data.last_updated)
         </IonCardHeader>
       ) : (
         <IonCardHeader>
-          <div className="d-flex justify-content-between">
+          <div className="d-flex justify-content-between mb-2">
             <IonCardTitle>{data.title}</IonCardTitle>
             <IonButton size="small" onClick={()=> setHistoryModalIsOpen(true)}>View history</IonButton>
           </div>
@@ -66,24 +66,27 @@ console.log(data.last_updated)
         </IonCardHeader>
       )}
 
-      <IonCardContent>
-        <IonList>
+      <IonCardContent className="p-0">
+        <IonList inset = {true} lines="inset">
           {data.current_working_set ? (
             <IonItem>
-              <IonLabel>{`Current Set: ${data.current_working_set}`}</IonLabel>
+              <IonLabel className="m-0"><h1>Current Set:</h1></IonLabel>
+              <IonLabel className="d-flex align-items-center m-0 h-100 fs-3">{data.current_working_set}</IonLabel>
             </IonItem>
           ) : (
             ""
           )}
           {data.max_reps ? (
             <IonItem>
-              <IonLabel>{`Max Reps: ${data.max_reps}lb`}</IonLabel>
+              <IonLabel className="m-0"><h1>Max Set:</h1></IonLabel>
+              <IonLabel className="d-flex align-items-center m-0 h-100 fs-3">{`${data.max_reps}lbs`}</IonLabel>
             </IonItem>
           ) : (
             ""
           )}
           <IonItem>
-            <IonLabel>{`Weight: ${data.weight}lb` }</IonLabel>
+            <IonLabel className="m-0"><h1>Weight:</h1></IonLabel>
+            <IonLabel className="d-flex align-items-center m-0 h-100 fs-3">{`${data.weight}lbs`}</IonLabel>
           </IonItem>
         </IonList>
 

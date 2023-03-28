@@ -62,13 +62,13 @@ const Home = () => {
           </IonFabButton>
           <IonFabList side="top">
             <IonFabButton onClick={() => setDeleteOptions()}>
-              <IonIcon icon={trash}></IonIcon>
+              <IonIcon color="danger" icon={trash}></IonIcon>
             </IonFabButton>
             <IonFabButton onClick={() => setEditOptions()}>
-              <IonIcon icon={create}></IonIcon>
+              <IonIcon color="warning" icon={create}></IonIcon>
             </IonFabButton>
             <IonFabButton onClick={() => addModalOpen()}>
-              <IonIcon icon={add}></IonIcon>
+              <IonIcon color="success" icon={add}></IonIcon>
             </IonFabButton>
           </IonFabList>
         </IonFab>

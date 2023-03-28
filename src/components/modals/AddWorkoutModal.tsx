@@ -134,15 +134,6 @@ const AddWorkoutModal = ({ setAddModalIsOpen, addModalIsOpen, setWorkOutList } :
             onIonChange={(e) => setCurrentSet((e.target as HTMLIonInputElement).value as string)}
           />
         </IonItem>
-        <IonItem>
-          <IonLabel position="floating">Enter Max Reps</IonLabel>
-          <IonInput
-            type="text"
-            value={maxSet}
-            placeholder="10 x 10"
-            onIonChange={(e) => setMaxSet((e.target as HTMLIonInputElement).value as string)}
-          />
-        </IonItem>
         <IonItem className={`${isValidWeight && 'ion-valid'} ${isValidWeight === false && 'ion-invalid'}`}>
           <IonLabel position="floating">Enter Weight</IonLabel>
           <IonInput
@@ -153,6 +144,16 @@ const AddWorkoutModal = ({ setAddModalIsOpen, addModalIsOpen, setWorkOutList } :
           />
           <IonNote slot="error">Weight is required</IonNote>
         </IonItem>
+        <IonItem>
+          <IonLabel position="floating">Enter Max Reps</IonLabel>
+          <IonInput
+            type="text"
+            value={maxSet}
+            placeholder="10 x 10"
+            onIonChange={(e) => setMaxSet((e.target as HTMLIonInputElement).value as string)}
+          />
+        </IonItem>
+       
       </IonContent>
     </IonModal>
   );
